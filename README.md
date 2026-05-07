@@ -105,3 +105,4 @@ The eight original brand logo PNGs are under `public/logos/`. The four currently
 ## Open content questions
 
 See the **Open Questions** section at the bottom of `CLAUDE.md` for items that still need Victor's input — Europa weight licensing, real team headshots and titles, French translation if the site goes bilingual, etc.
+# ripplehouse
