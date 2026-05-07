@@ -1,0 +1,160 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// The form uses Netlify Forms. The data-netlify="true" attribute and
+// the hidden form-name input are picked up at build time. On submit,
+// Netlify redirects to /thank-you (configured below via the action attr).
+---
+
+<Base
+  title="Get in touch — RippleHouse"
+  description="Tell us about your brand. Let's build your growth plan together."
+>
+  <Header />
+
+  <main class="bg-white">
+    <section class="section pt-16 md:pt-20 pb-12">
+      <div class="section-inner grid lg:grid-cols-12 gap-12 lg:gap-20">
+        <!-- Intro column -->
+        <div class="lg:col-span-5">
+          <span class="eyebrow">Get in touch</span>
+          <h1 class="mt-4 text-display-lg leading-[0.95]">
+            Let's talk.
+          </h1>
+
+          <p class="mt-8 text-lg md:text-xl text-ripple-black/75 leading-relaxed max-w-md">
+            Tell us a little about your brand and what you're hoping
+            to do next.
+          </p>
+
+          <p class="tagline-mark mt-8">
+            Home of impactful business growth
+          </p>
+        </div>
+
+        <!-- Form column -->
+        <div class="lg:col-span-7">
+          <div class="bg-ripple-yellow p-8 md:p-12 relative overflow-hidden">
+            <div aria-hidden="true" class="absolute -top-12 -right-12 w-48 h-48 ripple-bg opacity-50"></div>
+
+            <form
+              name="contact"
+              method="POST"
+              action="/thank-you"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              class="relative space-y-6"
+            >
+              <!-- Netlify form metadata -->
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden">
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </p>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block font-mono text-xs uppercase tracking-[0.18em] mb-2">
+                    Your name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="w-full bg-transparent border-b-2 border-ripple-black/40 focus:border-ripple-black focus:outline-none py-2 font-display text-base"
+                  />
+                </div>
+
+                <div>
+                  <label for="email" class="block font-mono text-xs uppercase tracking-[0.18em] mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="w-full bg-transparent border-b-2 border-ripple-black/40 focus:border-ripple-black focus:outline-none py-2 font-display text-base"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="brand" class="block font-mono text-xs uppercase tracking-[0.18em] mb-2">
+                  Brand or company
+                </label>
+                <input
+                  type="text"
+                  id="brand"
+                  name="brand"
+                  required
+                  class="w-full bg-transparent border-b-2 border-ripple-black/40 focus:border-ripple-black focus:outline-none py-2 font-display text-base"
+                />
+              </div>
+
+              <div>
+                <label for="stage" class="block font-mono text-xs uppercase tracking-[0.18em] mb-2">
+                  Stage
+                </label>
+                <select
+                  id="stage"
+                  name="stage"
+                  required
+                  class="w-full bg-transparent border-b-2 border-ripple-black/40 focus:border-ripple-black focus:outline-none py-2 font-display text-base appearance-none cursor-pointer"
+                >
+                  <option value="">Select your stage…</option>
+                  <option>Pre-revenue / launching</option>
+                  <option>Under $500K revenue</option>
+                  <option>$500K – $2M revenue</option>
+                  <option>$2M – $10M revenue</option>
+                  <option>$10M+ revenue</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="interest" class="block font-mono text-xs uppercase tracking-[0.18em] mb-2">
+                  What you're hoping to do
+                </label>
+                <select
+                  id="interest"
+                  name="interest"
+                  required
+                  class="w-full bg-transparent border-b-2 border-ripple-black/40 focus:border-ripple-black focus:outline-none py-2 font-display text-base appearance-none cursor-pointer"
+                >
+                  <option value="">Pick one…</option>
+                  <option>Build a commercial growth plan</option>
+                  <option>On-demand consulting</option>
+                  <option>Fractional CCO engagement</option>
+                  <option>Not sure yet — let's discuss</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block font-mono text-xs uppercase tracking-[0.18em] mb-2">
+                  Anything else (optional)
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="w-full bg-transparent border-b-2 border-ripple-black/40 focus:border-ripple-black focus:outline-none py-2 font-display text-base resize-none"
+                ></textarea>
+              </div>
+
+              <div class="pt-4">
+                <button type="submit" class="btn-primary">
+                  Send it
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>

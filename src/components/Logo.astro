@@ -1,0 +1,44 @@
+---
+// Reusable lockup: icon PNG + live-text wordmark.
+//
+// The supplied lockup PNGs only contained the icon (no wordmark in the
+// alpha channel), so we render "Ripple_House" as text instead. This has
+// the side benefit of scaling perfectly and inheriting the brand font
+// once Europa Bold is licensed and wired in.
+//
+// Variants:
+//   - "dark"  → black wordmark, for use on light backgrounds (default)
+//   - "light" → white wordmark, for use on dark backgrounds
+//
+// Sizes:
+//   - "md"    → header (default)
+//   - "lg"    → larger contexts (footer, contact page)
+
+interface Props {
+  variant?: 'dark' | 'light';
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const { variant = 'dark', size = 'md', class: className = '' } = Astro.props;
+
+const wordColor = variant === 'light' ? 'text-ripple-white' : 'text-ripple-black';
+const tmColor = variant === 'light' ? 'text-ripple-white/55' : 'text-ripple-black/55';
+
+const iconHeight = size === 'lg' ? 'h-11' : 'h-9';
+const wordSize = size === 'lg' ? 'text-2xl md:text-[28px]' : 'text-xl md:text-[22px]';
+---
+
+<span class={`inline-flex items-center gap-2.5 ${className}`}>
+  <img
+    src="/logos/ripplehouse-icon.png"
+    alt=""
+    aria-hidden="true"
+    class={`${iconHeight} w-auto`}
+    height="44"
+    width="40"
+  />
+  <span class={`font-display font-extrabold tracking-[-0.01em] leading-none ${wordSize} ${wordColor}`}>
+    Ripple<span class="text-ripple-yellow">_</span>House<sup class={`ml-0.5 text-[0.42em] font-bold tracking-normal align-top ${tmColor}`}>TM</sup>
+  </span>
+</span>

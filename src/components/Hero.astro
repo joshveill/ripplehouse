@@ -1,0 +1,60 @@
+---
+// Hero — mirrors the deck's cover composition: bold copy on the left,
+// ripple pattern panel on the right. White-dominant with the yellow
+// pattern as the visual punch.
+---
+
+<section class="section pt-16 md:pt-20 pb-20 md:pb-28 overflow-hidden">
+  <div class="section-inner">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <!-- Copy column -->
+      <div class="lg:col-span-7 flex flex-col gap-8 animate-fade-up">
+        <span class="eyebrow text-ripple-black/70">Company · Est. Montréal</span>
+
+        <h1 class="text-display-xl text-ripple-black">
+          Home for<br />
+          <span class="relative inline-block">
+            impactful
+            <svg
+              class="absolute -bottom-2 left-0 w-full h-3 text-ripple-yellow"
+              viewBox="0 0 200 12"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path d="M0 8 Q 50 0 100 6 T 200 4 L 200 12 L 0 12 Z" fill="currentColor" />
+            </svg>
+          </span><br />
+          business growth.
+        </h1>
+
+        <p class="max-w-xl text-lg md:text-xl text-ripple-black/75 leading-relaxed">
+          We help CPG brands scale profitably through operator-led execution.
+          Built by operators. Designed for growth.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="/get-in-touch" class="btn-primary">
+            Build your growth plan
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#what-we-do" class="btn-secondary">
+            See what we do
+          </a>
+        </div>
+
+        <p class="tagline-mark mt-4 self-start">
+          Home of impactful business growth
+        </p>
+      </div>
+
+      <!-- Pattern panel -->
+      <div class="lg:col-span-5 relative">
+        <div class="aspect-square w-full max-w-[560px] mx-auto ripple-bg animate-fade-in">
+          <!-- The yellow ripple pattern is rendered via background-image
+               (see global.css → .ripple-bg). It comes from /public/ripple-pattern.png,
+               extracted from the brand cover slide. -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

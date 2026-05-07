@@ -1,0 +1,22 @@
+---
+// Site header — kept minimal: brand mark + a single CTA.
+// Sticky so the CTA stays accessible on scroll.
+import Logo from './Logo.astro';
+---
+
+<header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-ripple-black/5">
+  <div class="mx-auto max-w-page px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
+    <a href="/" aria-label="RippleHouse — home">
+      <Logo variant="dark" size="md" />
+    </a>
+
+    <nav class="flex items-center gap-8">
+      <a href="/#what-we-do" class="hidden md:inline-block link-underline font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
+      <a href="/#team" class="hidden md:inline-block link-underline font-mono text-sm uppercase tracking-[0.14em]">Team</a>
+      <a href="/get-in-touch" class="btn-primary">
+        Let's talk
+        <span aria-hidden="true">→</span>
+      </a>
+    </nav>
+  </div>
+</header>

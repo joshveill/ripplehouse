@@ -1,0 +1,91 @@
+---
+// Our operating model — slides 12 and 13 of the deck.
+// White background, four numbered steps with the full deck copy.
+
+const steps = [
+  {
+    number: '01',
+    label: 'Step 1',
+    title: 'Commercial Audit',
+    short: 'Holistic review of your commercial engine.',
+    body: 'A holistic review of your commercial engine — growth strategy, distribution, sales execution, partnerships, structure and long-term vision. We uncover what\'s working, what\'s misaligned and where growth is constrained.',
+  },
+  {
+    number: '02',
+    label: 'Step 2',
+    title: 'Strategic Analysis',
+    short: 'Isolate the one capability you execute better than anyone else.',
+    body: 'We isolate your unfair advantage — the one capability you execute better than anyone else. The edge competitors struggle to replicate. The lever that can redefine your trajectory when fully activated.',
+  },
+  {
+    number: '03',
+    label: 'Step 3',
+    title: 'Focused Recommendation',
+    short: 'Insight converted into prioritized action.',
+    body: 'We convert insight into decisive, prioritized action. No generic playbooks. Clear strategic moves designed to amplify your advantage and accelerate disciplined scale.',
+  },
+  {
+    number: '04',
+    label: 'Step 4',
+    title: 'Disciplined Execution',
+    short: 'Operationalized strategy with rigor and accountability.',
+    body: 'We operationalize the strategy with rigor, accountability and adaptive systems. Because advantage only becomes impact when it performs consistently in the market.',
+  },
+];
+---
+
+<section id="operating-model" class="section bg-white">
+  <div class="section-inner">
+    <div class="max-w-3xl mb-16 md:mb-20">
+      <span class="eyebrow">Our operating model</span>
+      <h2 class="mt-4 text-display-lg">
+        Four steps. Disciplined execution.
+      </h2>
+      <p class="mt-6 text-lg md:text-xl text-ripple-black/75 leading-relaxed">
+        We don't stop at strategy &mdash; we build it through until it works.
+        Analytical rigor, paired with a strategy-first, execution-driven mindset.
+      </p>
+    </div>
+
+    <ol class="grid md:grid-cols-2 gap-x-12 gap-y-14 lg:gap-y-20" role="list">
+      {steps.map((step, idx) => (
+        <li class="relative">
+          <!-- Number with house silhouette -->
+          <div class="flex items-baseline gap-4 mb-5">
+            <span class="step-number">{step.number}</span>
+            <span class="font-mono text-xs uppercase tracking-[0.18em] text-ripple-black/50">
+              {step.label}
+            </span>
+          </div>
+
+          <h3 class="text-2xl md:text-3xl font-extrabold mb-4 leading-tight">
+            {step.title}
+          </h3>
+
+          <p class="text-lg font-extrabold mb-4 leading-snug max-w-md">
+            {step.short}
+          </p>
+
+          <p class="text-base text-ripple-black/75 leading-relaxed max-w-md">
+            {step.body}
+          </p>
+
+          {idx < steps.length - 1 && (
+            <span aria-hidden="true" class="hidden md:block absolute -bottom-7 left-0 w-16 h-[2px] bg-ripple-yellow"></span>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    <!-- Closing rule -->
+    <div class="mt-20 pt-10 border-t-2 border-ripple-black flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <p class="font-mono text-sm uppercase tracking-[0.18em]">
+        We measure success by results &mdash; not decks.
+      </p>
+      <a href="/get-in-touch" class="btn-primary">
+        Start your audit
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

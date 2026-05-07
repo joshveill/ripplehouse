@@ -1,0 +1,12 @@
+# Local Netlify folder
+.netlify
+
+# macOS
+.DS_Store
+
+# Node / build artifacts
+node_modules
+dist
+
+# Astro
+.astro

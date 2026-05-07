@@ -1,0 +1,84 @@
+---
+// Team — slides 14-19 and 29 of the deck. The three named members are
+// Victor, Thibaud, and Stéphane. Real headshots are pending (CLAUDE.md
+// open question 4) — placeholder avatars use initials on yellow squares
+// so the layout is final and only the image needs to be swapped.
+
+const team = [
+  {
+    initials: 'VG',
+    name: 'Victor-Antoine Gauthier',
+    role: 'Founder',
+    quote:
+      'I\'m deeply passionate about people. Helping scale brands the right way — sustainably, thoughtfully, and with intention — is what genuinely excites me every day.',
+    clients: ['Dose', 'Harmless Harvest', 'Chocxo', 'Flirt'],
+  },
+  {
+    initials: 'TJ',
+    name: 'Thibaud Joubert',
+    role: 'Head of Commercial Strategy',
+    quote:
+      'After decades working across brands, supply chains and purpose-driven ventures, I\'m motivated to contribute where experience translates into real, lasting impact.',
+    clients: ['Groupe Nutri', 'Group Bel', 'La Pimenterie', 'Flirt', 'Evive'],
+  },
+  {
+    initials: 'SO',
+    name: "Stéphane O'Reilly",
+    role: 'Head Consultant',
+    quote:
+      'I\'m passionate about working alongside entrepreneurs who challenge the status quo. Long-term success is always built through collaboration and trust.',
+    clients: ['Broya', 'Harrington', 'Dose Juice'],
+  },
+];
+---
+
+<section id="team" class="section bg-white">
+  <div class="section-inner">
+    <div class="max-w-3xl mb-16 md:mb-20">
+      <span class="eyebrow">Meet the team</span>
+      <h2 class="mt-4 text-display-lg">
+        We've built, scaled, and sold brands ourselves.
+      </h2>
+      <p class="mt-6 text-lg md:text-xl text-ripple-black/75 leading-relaxed">
+        The three of us have spent careers in CPG &mdash; on the operator side
+        before this one. That's the lens we bring to every engagement.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {team.map((member) => (
+        <article class="flex flex-col">
+          <!-- Portrait — yellow square with initials. Replace with real photo:
+               <img src="/team/victor.jpg" ... /> -->
+          <div class="aspect-[4/5] bg-ripple-yellow relative overflow-hidden flex items-end p-6">
+            <div aria-hidden="true" class="absolute inset-0 ripple-bg opacity-40"></div>
+            <span class="relative font-display font-extrabold text-5xl md:text-6xl tracking-tight">
+              {member.initials}
+            </span>
+            <span aria-hidden="true" class="absolute top-5 right-5 text-ripple-teal text-3xl font-display">&ldquo;</span>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-3 flex-1">
+            <h3 class="text-xl md:text-2xl font-extrabold leading-tight">
+              {member.name}
+            </h3>
+            <p class="font-mono text-sm uppercase tracking-[0.14em] text-ripple-black/60">
+              {member.role}
+            </p>
+            <blockquote class="mt-2 text-base leading-relaxed text-ripple-black/85 italic">
+              {member.quote}
+            </blockquote>
+            <div class="mt-auto pt-5 border-t border-ripple-black/15">
+              <p class="font-mono text-xs uppercase tracking-[0.14em] text-ripple-black/50 mb-2">
+                Clients
+              </p>
+              <p class="text-sm leading-relaxed">
+                {member.clients.join(' · ')}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
