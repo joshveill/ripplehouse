@@ -101,7 +101,7 @@
 
   /* Section frame — consistent horizontal padding and centered max width */
   .section {
-    @apply px-6 md:px-12 lg:px-20 py-24 md:py-32;
+    @apply px-5 sm:px-6 md:px-12 lg:px-20 py-16 sm:py-20 md:py-32;
   }
 
   .section-inner {
