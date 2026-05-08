@@ -1,5 +1,9 @@
 ---
-// Reusable logo component using the brand icon.
+// Reusable logo component.
+//
+// Variants:
+//   - "dark"  → yellow wordmark SVG, for light backgrounds (default)
+//   - "light" → white logo PNG, for dark backgrounds
 //
 // Sizes:
 //   - "md"    → header (default)
@@ -14,11 +18,12 @@ interface Props {
 const { variant = 'dark', size = 'md', class: className = '' } = Astro.props;
 
 const iconHeight = size === 'lg' ? 'h-14' : 'h-10';
+const logoSrc = variant === 'light' ? '/logos/ripplehouse-logo-white.png' : '/logos/main-word-yellow.svg';
 ---
 
 <span class={`inline-flex items-center ${className}`}>
   <img
-    src="/logos/ripplehouse-icon.png"
+    src={logoSrc}
     alt="RippleHouse"
     class={`${iconHeight} w-auto`}
   />
