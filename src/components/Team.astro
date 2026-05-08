@@ -3,28 +3,36 @@
 
 const team = [
   {
-    initials: 'VG',
     name: 'Victor-Antoine Gauthier',
     role: 'Founder',
+    photo: '/logos/Victor.jpg',
     quote:
       'I\'m deeply passionate about people. Understanding how we can scale brands while positively impacting the humans & the ecosystem behind them is what motivates me most. Helping scale brands the right way—sustainably, thoughtfully, and with intention—is what genuinely excites me every day.',
     clients: ['Dose', 'Sea Tales', 'Recap Products'],
   },
   {
-    initials: 'TJ',
     name: 'Thibaud Joubert',
     role: 'Senior Consultant - Head of Impact',
+    photo: '/logos/thibeaud.jpg',
     quote:
       'After decades working across brands, supply chains, and purpose-driven ventures, I\'m motivated to contribute where experience can translate into real, lasting impact. For me, it\'s about helping founders grow responsibly while shaping a more resilient and forward-thinking industry.',
     clients: ['Group Bel', 'La Pimenterie', 'Flirt', 'Evive'],
   },
   {
-    initials: 'SO',
     name: "Stéphan O'Reilly",
     role: 'Lead Consultant',
+    photo: '/logos/steph.jpg',
     quote:
       'I\'m passionate about working alongside entrepreneurs who challenge the status quo. Helping them refine their go-to-market strategy, strengthen execution, and build sustainable retail momentum is where I add the most value. For me, long-term success is always built through collaboration and trust.',
     clients: ['Broya', 'Harrington', 'Dose Juice', 'Danone', 'Remedy'],
+  },
+  {
+    name: 'Grazianni Tsiory',
+    role: 'Executive Assistant - Project Coordinator',
+    photo: '/logos/Grazi.jpg',
+    quote:
+      'I am dedicated to building the structures that simplify the everyday. I find great purpose in transforming complex tasks into fluid systems that help teams thrive. For me, creating a seamless and supportive environment is the key to driving collective success and moving forward with confidence with real impact.',
+    clients: [],
   },
 ];
 ---
@@ -39,17 +47,11 @@ const team = [
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       {team.map((member) => (
         <article class="flex flex-col">
-          <!-- Portrait — yellow square with initials. Replace with real photo:
-               <img src="/team/victor.jpg" ... /> -->
-          <div class="aspect-[4/5] bg-ripple-yellow relative overflow-hidden flex items-end p-6">
-            <div aria-hidden="true" class="absolute inset-0 ripple-bg opacity-40"></div>
-            <span class="relative font-display font-extrabold text-5xl md:text-6xl tracking-tight">
-              {member.initials}
-            </span>
-            <span aria-hidden="true" class="absolute top-5 right-5 text-ripple-teal text-3xl font-display">&ldquo;</span>
+          <div class="aspect-[4/5] bg-ripple-yellow relative overflow-hidden">
+            <img src={member.photo} alt={member.name} class="absolute inset-0 w-full h-full object-cover" />
           </div>
 
           <div class="mt-6 flex flex-col gap-3 flex-1">
@@ -62,14 +64,16 @@ const team = [
             <blockquote class="mt-2 text-base leading-relaxed text-ripple-black/85 italic">
               {member.quote}
             </blockquote>
-            <div class="mt-auto pt-5 border-t border-ripple-black/15">
-              <p class="font-mono text-xs uppercase tracking-[0.14em] text-ripple-black/50 mb-2">
-                Clients
-              </p>
-              <p class="text-sm leading-relaxed">
-                {member.clients.join(' · ')}
-              </p>
-            </div>
+            {member.clients.length > 0 && (
+              <div class="mt-auto pt-5 border-t border-ripple-black/15">
+                <p class="font-mono text-xs uppercase tracking-[0.14em] text-ripple-black/50 mb-2">
+                  Clients
+                </p>
+                <p class="text-sm leading-relaxed">
+                  {member.clients.join(' · ')}
+                </p>
+              </div>
+            )}
           </div>
         </article>
       ))}
