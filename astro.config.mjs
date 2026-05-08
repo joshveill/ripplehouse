@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://ripplehouse.ca',
+  site: 'https://joshveill.github.io',
+  base: '/ripplehouse',
   integrations: [tailwind()],
 });
