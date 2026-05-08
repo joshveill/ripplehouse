@@ -28,7 +28,7 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
 
-    <link rel="icon" type="image/png" href="/logos/ripplehouse-icon.png" />
+    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logos/ripplehouse-icon.png`} />
 
     <!-- Once Adobe Fonts kit is provisioned, add: -->
     <!-- <link rel="stylesheet" href="https://use.typekit.net/REPLACE_WITH_KIT_ID.css" /> -->

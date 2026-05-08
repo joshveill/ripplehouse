@@ -1,19 +1,20 @@
 ---
 // Site header — sticky with mobile hamburger menu.
 import Logo from './Logo.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-ripple-black/5">
   <div class="mx-auto max-w-page px-6 md:px-12 lg:px-20 h-16 md:h-20 flex items-center justify-between">
-    <a href="/" aria-label="RippleHouse — home">
+    <a href={base} aria-label="RippleHouse — home">
       <Logo size="md" />
     </a>
 
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-8">
-      <a href="/#what-we-do" class="link-underline font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
-      <a href="/#team" class="link-underline font-mono text-sm uppercase tracking-[0.14em]">Team</a>
-      <a href="/get-in-touch" class="btn-primary">
+      <a href={`${base}#what-we-do`} class="link-underline font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
+      <a href={`${base}#team`} class="link-underline font-mono text-sm uppercase tracking-[0.14em]">Team</a>
+      <a href={`${base}get-in-touch`} class="btn-primary">
         Let's talk
         <span aria-hidden="true">→</span>
       </a>
@@ -38,9 +39,9 @@ import Logo from './Logo.astro';
     class="md:hidden hidden border-t border-ripple-black/5 bg-white/95 backdrop-blur-md"
   >
     <div class="px-6 py-6 flex flex-col gap-4">
-      <a href="/#what-we-do" class="font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
-      <a href="/#team" class="font-mono text-sm uppercase tracking-[0.14em]">Team</a>
-      <a href="/get-in-touch" class="btn-primary text-center justify-center">
+      <a href={`${base}#what-we-do`} class="font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
+      <a href={`${base}#team`} class="font-mono text-sm uppercase tracking-[0.14em]">Team</a>
+      <a href={`${base}get-in-touch`} class="btn-primary text-center justify-center">
         Let's talk
         <span aria-hidden="true">→</span>
       </a>

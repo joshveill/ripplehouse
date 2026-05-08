@@ -1,9 +1,6 @@
 ---
-// Closing CTA — full-bleed Ripple Teal. The teal appears once, here,
-// at the moment of the ask. This is intentional: in the deck, teal
-// shows up as a single quote-mark accent on slide 15. Reserving it
-// for the closing moment honors that rarity and makes the finale
-// memorable.
+// Closing CTA — full-bleed Ripple Teal.
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="bg-ripple-teal text-ripple-black overflow-hidden relative">
@@ -27,7 +24,7 @@
       </div>
 
       <div class="lg:col-span-4 flex flex-col items-start lg:items-end gap-6">
-        <a href="/get-in-touch" class="btn-primary text-base">
+        <a href={`${base}get-in-touch`} class="btn-primary text-base">
           Let&apos;s talk
           <span aria-hidden="true">→</span>
         </a>

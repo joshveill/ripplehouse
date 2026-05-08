@@ -2,6 +2,7 @@
 // Hero — mirrors the deck's cover composition: bold copy on the left,
 // ripple pattern panel on the right. White-dominant with the yellow
 // pattern as the visual punch.
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="section pt-16 md:pt-20 pb-20 md:pb-28 overflow-hidden">
@@ -34,7 +35,7 @@
         </p>
 
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="/get-in-touch" class="btn-primary">
+          <a href={`${base}get-in-touch`} class="btn-primary">
             Build your growth plan
             <span aria-hidden="true">→</span>
           </a>

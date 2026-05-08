@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
 
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
     <div class="section-inner grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
       <!-- Brand column -->
       <div class="md:col-span-5">
-        <img src="/logos/main-logo-yellow.svg" alt="RippleHouse" class="h-16 w-auto mb-6" />
+        <img src={`${base}logos/main-logo-yellow.svg`} alt="RippleHouse" class="h-16 w-auto mb-6" />
         <p class="tagline-mark">
           Home of impactful business growth
         </p>
@@ -23,10 +24,10 @@ const year = new Date().getFullYear();
           Site
         </p>
         <ul class="space-y-2 text-sm">
-          <li><a href="/#about" class="link-underline">About us</a></li>
-          <li><a href="/#what-we-do" class="link-underline">What we do</a></li>
-          <li><a href="/#team" class="link-underline">Team</a></li>
-          <li><a href="/get-in-touch" class="link-underline">Get in touch</a></li>
+          <li><a href={`${base}#about`} class="link-underline">About us</a></li>
+          <li><a href={`${base}#what-we-do`} class="link-underline">What we do</a></li>
+          <li><a href={`${base}#team`} class="link-underline">Team</a></li>
+          <li><a href={`${base}get-in-touch`} class="link-underline">Get in touch</a></li>
         </ul>
       </div>
 

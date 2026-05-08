@@ -17,8 +17,9 @@ interface Props {
 
 const { variant = 'dark', size = 'md', class: className = '' } = Astro.props;
 
+const base = import.meta.env.BASE_URL;
 const iconHeight = size === 'lg' ? 'h-28' : 'h-12 md:h-24';
-const logoSrc = variant === 'light' ? '/logos/ripplehouse-logo-white.png' : '/logos/main-word-yellow.svg';
+const logoSrc = variant === 'light' ? `${base}logos/ripplehouse-logo-white.png` : `${base}logos/main-word-yellow.svg`;
 ---
 
 <span class={`inline-flex items-center ${className}`}>
