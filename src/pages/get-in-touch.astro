@@ -40,18 +40,10 @@ import Footer from '../components/Footer.astro';
             <div aria-hidden="true" class="absolute -top-12 -right-12 w-48 h-48 ripple-bg opacity-50"></div>
 
             <form
-              name="contact"
               method="POST"
-              action="/thank-you"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
+              action="https://formspree.io/f/maqvdlkq"
               class="relative space-y-6"
             >
-              <!-- Netlify form metadata -->
-              <input type="hidden" name="form-name" value="contact" />
-              <p class="hidden">
-                <label>Don't fill this out: <input name="bot-field" /></label>
-              </p>
 
               <div class="grid md:grid-cols-2 gap-6">
                 <div>
