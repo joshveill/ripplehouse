@@ -1,5 +1,6 @@
 ---
 // How it works? — deck slide 9 · full-bleed yellow + one editorial sentence.
+import Reveal from './Reveal.astro';
 ---
 
 <section id="how-it-works" class="bg-ripple-yellow text-ripple-black overflow-hidden">
@@ -16,12 +17,71 @@
 
       <div class="lg:col-span-9">
         <p class="text-display-md leading-tight">
-          We identify your unfair advantage,
-          align it with a real market need, structure it strategically, and activate it commercially &mdash;
-          so it drives measurable growth and lasting impact.
+          We identify your <Reveal>unfair advantage</Reveal>,
+          align it with a real market need, structure it strategically, and <Reveal>activate it</Reveal> commercially &mdash;
+          so it drives measurable growth and <Reveal>lasting</Reveal> <Reveal>impact</Reveal>.
         </p>
 
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+(function () {
+  function initReveal() {
+    var targets = document.querySelectorAll('.reveal');
+    if (!targets.length) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      targets.forEach(function (el) {
+        el.style.clipPath = 'inset(0)';
+        el.style.backgroundSize = '100% 100%';
+      });
+      return;
+    }
+
+    // Add reveal-ready so clip-path kicks in
+    targets.forEach(function (el) { el.classList.add('reveal-ready'); });
+
+    var ticking = false;
+
+    function update() {
+      var vh = window.innerHeight;
+      var startY = vh * 0.85;
+      var endY = vh * 0.35;
+
+      targets.forEach(function (el) {
+        var rect = el.getBoundingClientRect();
+        var raw = (startY - rect.top) / (startY - endY);
+        var progress = Math.max(0, Math.min(1, raw));
+
+        var wordProgress = Math.min(1, progress / 0.5);
+        var clipRight = 100 - wordProgress * 100;
+        el.style.clipPath = 'inset(0 ' + clipRight + '% 0 0)';
+
+        var highlightProgress = Math.max(0, (progress - 0.5) / 0.5);
+        el.style.backgroundSize = (highlightProgress * 100) + '% 100%';
+      });
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  }
+
+  if (document.readyState === 'complete') {
+    initReveal();
+  } else {
+    window.addEventListener('load', initReveal);
+  }
+})();
+</script>

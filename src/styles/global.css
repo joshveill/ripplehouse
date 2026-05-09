@@ -150,3 +150,31 @@
   transform-origin: left;
 }
 
+/* Scroll-linked word reveal + teal highlight sweep */
+.reveal {
+  --reveal-color: #0AEBDC;
+  display: inline;
+  background-image: linear-gradient(
+    transparent 60%,
+    var(--reveal-color) 60%,
+    var(--reveal-color) 94%,
+    transparent 94%
+  );
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  padding: 0 3px;
+  margin: 0 -3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.reveal.reveal-ready {
+  clip-path: inset(0 100% 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.reveal-ready {
+    clip-path: inset(0) !important;
+    background-size: 100% 100% !important;
+  }
+}
