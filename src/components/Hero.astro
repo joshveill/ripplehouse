@@ -1,50 +1,53 @@
 ---
-// Hero — bold copy on the left, ripple pattern on the right.
-// Ripple effect covers the entire section.
+// Hero — mirrors the deck's cover composition: bold copy on the left,
+// ripple pattern panel on the right. White-dominant with the yellow
+// pattern as the visual punch.
 const base = import.meta.env.BASE_URL;
 ---
 
-<div
-  id="ripple"
-  class="relative"
-  style={`background: url('${base}logos/ripple-square.jpg') no-repeat center center; background-size: cover;`}
->
-  <section class="px-5 sm:px-6 md:px-12 lg:px-20 pt-6 md:pt-8 pb-12 md:pb-16 overflow-hidden">
-    <div class="mx-auto max-w-page">
-      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-        <!-- Copy column -->
-        <div class="lg:col-span-7 flex flex-col gap-8 animate-fade-up">
-          <span class="eyebrow text-ripple-black/70">Company · Est. Montréal</span>
+<section class="section pt-6 md:pt-8 pb-20 md:pb-28 overflow-hidden">
+  <div class="section-inner">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <!-- Copy column -->
+      <div class="lg:col-span-7 flex flex-col gap-8 animate-fade-up">
+        <span class="eyebrow text-ripple-black/70">Company · Est. Montréal</span>
 
-          <h1 class="text-display-xl text-ripple-black">
-            Home for<br />
-            <span class="relative inline-block pb-1">
-              impactful
-              <span class="absolute bottom-0 left-0 w-full h-[3px] bg-ripple-yellow rounded-full"></span>
-            </span><br />
-            business growth.
-          </h1>
+        <h1 class="text-display-xl text-ripple-black">
+          Home for<br />
+          <span class="relative inline-block pb-1">
+            impactful
+            <span class="absolute bottom-0 left-0 w-full h-[3px] bg-ripple-yellow rounded-full"></span>
+          </span><br />
+          business growth.
+        </h1>
 
-          <p class="max-w-xl text-lg md:text-xl text-ripple-black/75 leading-relaxed">
-            We help CPG brands scale profitably through operator-led execution for
-            impactful growth.
-          </p>
+        <p class="max-w-xl text-lg md:text-xl text-ripple-black/75 leading-relaxed">
+          We help CPG brands scale profitably through operator-led execution for
+          impactful growth.
+        </p>
+      </div>
+
+      <!-- Pattern panel with ripple effect -->
+      <div class="lg:col-span-5 relative">
+        <div class="aspect-square w-full max-w-[560px] mx-auto animate-fade-in">
+          <div
+            id="ripple"
+            class="w-full h-full"
+            style={`background: url('${base}logos/ripple-square.jpg') no-repeat center center; background-size: cover;`}
+          ></div>
         </div>
-
-        <!-- Spacer for right side -->
-        <div class="lg:col-span-5"></div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
 <script is:inline>
   $(window).on('load', function () {
     try {
       $('#ripple').ripples({
-        resolution: 256,
-        dropRadius: 40,
-        perturbance: 0.02,
+        resolution: 512,
+        dropRadius: 20,
+        perturbance: 0.04,
         interactive: true,
         crossOrigin: '',
       });
