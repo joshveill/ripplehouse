@@ -5,7 +5,7 @@
 const base = import.meta.env.BASE_URL;
 ---
 
-<section id="hero-section" class="section pt-6 md:pt-8 pb-20 md:pb-28 overflow-hidden" style="background: #f0fffe;">
+<section class="section pt-6 md:pt-8 pb-20 md:pb-28 overflow-hidden relative" id="hero-section">
   <div class="section-inner">
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
       <!-- Copy column -->
@@ -50,12 +50,6 @@ const base = import.meta.env.BASE_URL;
         perturbance: 0.04,
         interactive: true,
         crossOrigin: '',
-      });
-      $('#hero-section').ripples({
-        resolution: 256,
-        dropRadius: 30,
-        perturbance: 0.03,
-        interactive: true,
       });
     } catch (e) {
       // WebGL not supported — fail silently

@@ -9,23 +9,23 @@ const team = [
     photo: `${base}logos/Victor.jpg`,
     quote:
       'I\'m deeply passionate about people. Understanding how we can scale brands while positively impacting the humans & the ecosystem behind them is what motivates me most. Helping scale brands the right way—sustainably, thoughtfully, and with intention—is what genuinely excites me every day.',
-    clients: ['Dose', 'Sea Tales', 'Recap Products'],
+    previously: 'Flirt, Dose, Sea Tales, Recap Products…',
   },
   {
     name: 'Thibaud Joubert',
-    role: 'Senior Consultant - Head of Impact',
+    role: 'Senior Consultant - Head of Impact and Strategy',
     photo: `${base}logos/thibeaud.jpg`,
     quote:
-      'After decades working across brands, supply chains, and purpose-driven ventures, I\'m motivated to contribute where experience can translate into real, lasting impact. For me, it\'s about helping founders grow responsibly while shaping a more resilient and forward-thinking industry.',
-    clients: ['Group Bel', 'La Pimenterie', 'Flirt', 'Evive'],
+      'After decades working across CPG brands, value chains, and purpose-driven ventures, I\'m ready to jump in where my experience can help bring real, lasting impact. For me, it\'s about helping founders grow responsibly while shaping a more resilient and forward-thinking industry.',
+    previously: 'Group Bel, Ecotierra, Boulart, Toucan, 20+ food startups',
   },
   {
     name: "Stéphan O'Reilly",
-    role: 'Lead Consultant',
+    role: 'Senior Consultant Collaborator - Commercial Development & Strategy',
     photo: `${base}logos/steph.jpg`,
     quote:
       'I\'m passionate about working alongside entrepreneurs who challenge the status quo. Helping them refine their go-to-market strategy, strengthen execution, and build sustainable retail momentum is where I add the most value. For me, long-term success is always built through collaboration and trust.',
-    clients: ['Broya', 'Harrington', 'Dose Juice', 'Danone', 'Remedy'],
+    previously: 'White Wave, Danone, Dose Juice, Remedy Drink, Grazy…',
   },
   {
     name: 'Grazianni Tsiory',
@@ -33,7 +33,7 @@ const team = [
     photo: `${base}logos/Grazi.jpg`,
     quote:
       'I am dedicated to building the structures that simplify the everyday. I find great purpose in transforming complex tasks into fluid systems that help teams thrive. For me, creating a seamless and supportive environment is the key to driving collective success and moving forward with confidence with real impact.',
-    clients: [],
+    previously: null,
   },
 ];
 ---
@@ -50,12 +50,12 @@ const team = [
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
       {team.map((member) => (
-        <article class="flex flex-col">
+        <article class="flex flex-col h-full">
           <div class="aspect-[4/5] bg-ripple-yellow relative overflow-hidden">
             <img src={member.photo} alt={member.name} class="absolute inset-0 w-full h-full object-cover" />
           </div>
 
-          <div class="mt-6 flex flex-col gap-3 flex-1">
+          <div class="mt-6 flex flex-col gap-3 team-card-body">
             <h3 class="text-xl md:text-2xl font-extrabold leading-tight">
               {member.name}
             </h3>
@@ -65,19 +65,37 @@ const team = [
             <blockquote class="mt-2 text-base leading-relaxed text-ripple-black/85 italic">
               {member.quote}
             </blockquote>
-            {member.clients.length > 0 && (
-              <div class="mt-auto pt-5 border-t border-ripple-black/15">
-                <p class="font-mono text-xs uppercase tracking-[0.14em] text-ripple-black/50 mb-2">
-                  Clients
-                </p>
-                <p class="text-sm leading-relaxed">
-                  {member.clients.join(' · ')}
-                </p>
-              </div>
-            )}
+          </div>
+          <div class="team-card-previously pt-5 border-t border-ripple-black/15" style={member.previously ? '' : 'visibility:hidden'}>
+            <p class="font-mono text-xs uppercase tracking-[0.14em] text-ripple-black/50 mb-2">
+              Previously
+            </p>
+            <p class="text-sm leading-relaxed">
+              {member.previously || '\u00A0'}
+            </p>
           </div>
         </article>
       ))}
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (function () {
+    function alignPreviously() {
+      var bodies = document.querySelectorAll('.team-card-body');
+      if (!bodies.length) return;
+      // Reset heights first
+      bodies.forEach(function (el) { el.style.minHeight = ''; });
+      // Only align on desktop (4-col layout)
+      if (window.innerWidth < 1024) return;
+      var max = 0;
+      bodies.forEach(function (el) {
+        if (el.offsetHeight > max) max = el.offsetHeight;
+      });
+      bodies.forEach(function (el) { el.style.minHeight = max + 'px'; });
+    }
+    window.addEventListener('load', alignPreviously);
+    window.addEventListener('resize', alignPreviously);
+  })();
+</script>
