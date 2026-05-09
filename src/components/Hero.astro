@@ -44,11 +44,12 @@ const base = import.meta.env.BASE_URL;
 <script is:inline>
   $(window).on('load', function () {
     try {
-      $('#hero-section').ripples({
+      $('#ripple').ripples({
         resolution: 256,
         dropRadius: 40,
-        perturbance: 0.02,
+        perturbance: 0.04,
         interactive: true,
+        crossOrigin: '',
       });
     } catch (e) {
       // WebGL not supported — fail silently
