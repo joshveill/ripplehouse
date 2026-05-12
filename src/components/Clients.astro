@@ -1,0 +1,63 @@
+---
+// Client logos strip — shown directly below the hero as social proof.
+//
+// To add a client:
+//   1. Drop the logo file (SVG preferred, PNG fine) in public/logos/client/
+//   2. Add an entry to the array below with { name, logo }
+//   3. Entries without a `logo` render a placeholder while you collect assets.
+
+const base = import.meta.env.BASE_URL;
+
+interface Client {
+  name: string;
+  logo?: string;
+}
+
+const clients: Client[] = [
+  { name: 'Boiron', logo: 'Boiron.png' },
+  { name: 'Choxco', logo: 'Choxco.png' },
+  { name: 'Domaine Héritage', logo: 'Domaine Heritage.png' },
+  { name: 'Dose', logo: 'Dose.png' },
+  { name: 'Érable', logo: 'Erable.png' },
+  { name: 'Flirt', logo: 'Flirt.png' },
+  { name: 'Harmless', logo: 'Harmless.png' },
+  { name: 'Hive', logo: 'Hive.png' },
+  { name: 'Honey Stinger', logo: 'Honey Stinger.png' },
+  { name: 'KPMG', logo: 'kpmg.svg' },
+  { name: 'Maple 3', logo: 'maple3.png' },
+  { name: 'Maple Time', logo: 'Maple time.png' },
+  { name: 'Sea Tales', logo: 'Sea Tales blanc.png' },
+];
+
+// Duplicate the list so the marquee can scroll seamlessly: when the
+// track has shifted by -50%, the second copy lines up with the first
+// copy's original position and the loop repeats without a visible jump.
+const marqueeItems = [...clients, ...clients];
+---
+
+<section aria-label="Trusted by" class="bg-white border-y border-ripple-black/10">
+  <div class="py-10 md:py-12">
+    <p class="eyebrow text-center text-ripple-black/60 mb-6 md:mb-8">
+      Trusted by
+    </p>
+    <div class="logo-marquee-mask overflow-hidden">
+      <ul class="logo-marquee-track items-center">
+        {marqueeItems.map((client, i) => (
+          <li class="flex items-center justify-center h-12 md:h-14 px-8 md:px-10 lg:px-12 shrink-0" aria-hidden={i >= clients.length ? 'true' : undefined}>
+            {client.logo ? (
+              <img
+                src={`${base}logos/client/${encodeURI(client.logo)}`}
+                alt={i >= clients.length ? '' : client.name}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-auto max-w-[160px] object-contain"
+              />
+            ) : (
+              <span aria-hidden="true" class="block w-32 h-full border border-dashed border-ripple-black/25 rounded"></span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
