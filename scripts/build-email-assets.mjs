@@ -51,11 +51,12 @@ for (const member of team) {
     .toFile(resolve(teamOut, `circle-${circleName}`));
 }
 
-// Logo — full version (icon + wordmark + tagline), used directly.
-await copyFile(
-  resolve(root, 'public/logos/full-logo.png'),
-  resolve(out, 'logo.png'),
-);
+// Logo — the yellow wordmark SVG, rasterised to PNG for reliable rendering
+// in email clients (Outlook in particular drops SVG <img> sources).
+await sharp(resolve(root, 'public/logos/main-word-yellow.svg'))
+  .resize({ width: 800 })
+  .png()
+  .toFile(resolve(out, 'logo.png'));
 
 // Logo — icon only at 240x240 (2x retina for ~120px display).
 await sharp(resolve(root, 'public/logos/main-logo-yellow.svg'))
