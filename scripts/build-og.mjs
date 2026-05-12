@@ -5,9 +5,9 @@ import { dirname, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
-// Render the full logo PNG (black icon + wordmark on transparent) onto a
-// white 1200x630 canvas, which is the recommended Open Graph aspect ratio.
-const wordmark = await sharp(resolve(root, 'public/logos/white-word.png'))
+// Render the full logo PNG (icon + wordmark + tagline) onto a white
+// 1200x630 canvas, which is the recommended Open Graph aspect ratio.
+const wordmark = await sharp(resolve(root, 'public/logos/full-logo.png'))
   .resize({ width: 900 })
   .toBuffer();
 
