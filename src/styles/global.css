@@ -159,7 +159,7 @@
 .logo-marquee-track {
   display: flex;
   width: max-content;
-  animation: logo-marquee-scroll 40s linear infinite;
+  animation: logo-marquee-scroll 25s linear infinite;
 }
 
 .logo-marquee-mask {
