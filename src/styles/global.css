@@ -153,7 +153,8 @@
 /* Scroll-linked word reveal + teal highlight sweep */
 .reveal {
   --reveal-color: #0AEBDC;
-  display: inline;
+  display: inline-block;
+  white-space: nowrap;
   background-image: linear-gradient(
     transparent 60%,
     var(--reveal-color) 60%,
@@ -164,8 +165,6 @@
   background-repeat: no-repeat;
   padding: 0 3px;
   margin: 0 -3px;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 
 .reveal.reveal-ready {
