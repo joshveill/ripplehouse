@@ -19,6 +19,9 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://code.jquery.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'; object-src 'none'; frame-ancestors 'none';" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
 
@@ -30,11 +33,26 @@ const {
 
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logos/ripplehouse-icon.png`} />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Once Adobe Fonts kit is provisioned, add: -->
     <!-- <link rel="stylesheet" href="https://use.typekit.net/REPLACE_WITH_KIT_ID.css" /> -->
 
-    <script is:inline src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script is:inline src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples-min.js"></script>
+    <script
+      is:inline
+      defer
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      is:inline
+      defer
+      src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples-min.js"
+      integrity="sha384-5ZA4JBkTBCN9u6md6s27jm7QrFzL9t2L2rhVbfXzGL1/Q0U79qDOEJ4tnuoy6Mtt"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <slot />

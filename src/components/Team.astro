@@ -1,12 +1,16 @@
 ---
 // Team — slides 14–19 of the pitch deck.
-const base = import.meta.env.BASE_URL;
+import { Image } from 'astro:assets';
+import victorPhoto from '../assets/team/Victor.jpg';
+import thibeaudPhoto from '../assets/team/thibeaud.jpg';
+import stephPhoto from '../assets/team/steph.jpg';
+import graziPhoto from '../assets/team/Grazi.jpg';
 
 const team = [
   {
     name: 'Victor-Antoine Gauthier',
     role: 'Founder',
-    photo: `${base}logos/Victor.jpg`,
+    photo: victorPhoto,
     quote:
       'I\'m deeply passionate about people. Understanding how we can scale brands while positively impacting the humans & the ecosystem behind them is what motivates me most. Helping scale brands the right way—sustainably, thoughtfully, and with intention—is what genuinely excites me every day.',
     previously: 'Flirt, Dose, Sea Tales, Recap Products…',
@@ -14,15 +18,15 @@ const team = [
   {
     name: 'Thibaud Joubert',
     role: 'Senior Consultant - Head of Impact and Strategy',
-    photo: `${base}logos/thibeaud.jpg`,
+    photo: thibeaudPhoto,
     quote:
       'After decades working across CPG brands, value chains, and purpose-driven ventures, I\'m ready to jump in where my experience can help bring real, lasting impact. For me, it\'s about helping founders grow responsibly while shaping a more resilient and forward-thinking industry.',
     previously: 'Group Bel, Ecotierra, Boulart, Toucan, 20+ food startups',
   },
   {
     name: "Stéphan O'Reilly",
-    role: 'Senior Consultant Collaborator - Commercial Development & Strategy',
-    photo: `${base}logos/steph.jpg`,
+    role: 'Senior Consultant - Commercial Development & Strategy',
+    photo: stephPhoto,
     quote:
       'I\'m passionate about working alongside entrepreneurs who challenge the status quo. Helping them refine their go-to-market strategy, strengthen execution, and build sustainable retail momentum is where I add the most value. For me, long-term success is always built through collaboration and trust.',
     previously: 'White Wave, Danone, Dose Juice, Remedy Drink, Grazy…',
@@ -30,7 +34,7 @@ const team = [
   {
     name: 'Grazianni Tsiory',
     role: 'Executive Assistant - Project Coordinator',
-    photo: `${base}logos/Grazi.jpg`,
+    photo: graziPhoto,
     quote:
       'I am dedicated to building the structures that simplify the everyday. I find great purpose in transforming complex tasks into fluid systems that help teams thrive. For me, creating a seamless and supportive environment is the key to driving collective success and moving forward with confidence with real impact.',
     previously: null,
@@ -52,17 +56,27 @@ const team = [
       {team.map((member) => (
         <article class="flex flex-col h-full">
           <div class="aspect-[4/5] bg-ripple-yellow relative overflow-hidden">
-            <img src={member.photo} alt={member.name} class="absolute inset-0 w-full h-full object-cover" />
+            <Image
+              src={member.photo}
+              alt={member.name}
+              widths={[300, 600, 900]}
+              sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
           </div>
 
-          <div class="mt-6 flex flex-col gap-3 team-card-body">
-            <h3 class="text-xl md:text-2xl font-extrabold leading-tight">
-              {member.name}
-            </h3>
-            <p class="font-mono text-sm uppercase tracking-[0.14em] text-ripple-black/60 min-h-[2.5rem]">
-              {member.role}
-            </p>
-            <blockquote class="mt-2 text-base leading-relaxed text-ripple-black/85 italic">
+          <div class="mt-6 flex flex-col gap-1 team-card-body">
+            <div class="flex flex-col gap-3 min-h-[6.625rem] md:min-h-[7.25rem]">
+              <h3 class="text-xl md:text-2xl font-extrabold leading-tight">
+                {member.name}
+              </h3>
+              <p class="font-mono text-sm uppercase tracking-[0.14em] text-ripple-black/60 min-h-[2.5rem]">
+                {member.role}
+              </p>
+            </div>
+            <blockquote class="text-base leading-relaxed text-ripple-black/85 italic">
               {member.quote}
             </blockquote>
           </div>
