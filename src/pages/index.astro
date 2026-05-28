@@ -11,11 +11,8 @@ import CtaBanner from '../components/CtaBanner.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Base
-  title="RippleHouse — Home of impactful business growth"
-  description="RippleHouse helps CPG brands scale profitably through operator-led execution. Built by operators. Designed for growth."
->
-  <Header />
+<Base routeKey="home">
+  <Header routeKey="home" />
   <main>
     <Hero />
     <Clients />

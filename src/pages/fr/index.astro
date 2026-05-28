@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import Clients from '../../components/Clients.astro';
+import About from '../../components/About.astro';
+import WhatWeDo from '../../components/WhatWeDo.astro';
+import HowItWorks from '../../components/HowItWorks.astro';
+import Team from '../../components/Team.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Base routeKey="home">
+  <Header routeKey="home" />
+  <main>
+    <Hero />
+    <Clients />
+    <About />
+    <WhatWeDo />
+    <HowItWorks />
+    <Team />
+    <CtaBanner />
+  </main>
+  <Footer />
+</Base>

@@ -1,47 +1,24 @@
 ---
-// What we do — three offerings from slide 10 of the deck.
-// White background, three cards with the yellow house silhouette
-// as the step-number marker (graphic primitive on slide 30).
-
-const services = [
-  {
-    number: '01',
-    title: 'Commercial Growth Plan',
-    outcome: 'Turn your unfair advantage into scalable & impactful growth.',
-    summary: 'A clear, actionable path to profitable scale.',
-  },
-  {
-    number: '02',
-    title: 'On-Demand Consulting',
-    outcome: 'World class support where it actually matters.',
-    summary:
-      'Where strategy & execution intersect for support across sales, operations, finance & marketing.',
-  },
-  {
-    number: '03',
-    title: 'Fractional Country Manager',
-    outcome: 'Embedded across all functions.',
-    summary: 'Operations, Marketing, Finance & Sales.',
-  },
-];
+import { getLocale, useStrings } from '../i18n/utils';
+const s = useStrings(getLocale(Astro)).whatWeDo;
 ---
 
 <section id="what-we-do" class="section bg-ripple-white">
   <div class="section-inner">
     <div class="max-w-3xl mb-16 md:mb-20">
-      <span class="eyebrow">The RippleHouse Effect</span>
+      <span class="eyebrow">{s.eyebrow}</span>
       <h2 class="mt-4 text-display-lg">
-        What do we actually do?
+        {s.heading}
       </h2>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ripple-black/10">
-      {services.map((service) => (
+      {s.services.map((service) => (
         <article class="bg-white p-8 md:p-10 flex flex-col gap-6 group transition-colors duration-300 hover:bg-ripple-yellow/40">
           <div class="flex items-start justify-between">
             <span class="step-number">{service.number}</span>
             <span aria-hidden="true" class="font-mono text-xs uppercase tracking-widest text-ripple-black/40">
-              service
+              {s.serviceTag}
             </span>
           </div>
 

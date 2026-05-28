@@ -1,0 +1,29 @@
+---
+import { getLocale, pathFor } from '../i18n/utils';
+import type { RouteKey } from '../i18n/routes';
+
+interface Props {
+  routeKey?: RouteKey;
+}
+
+const { routeKey = 'home' } = Astro.props;
+const current = getLocale(Astro);
+---
+
+<div class="font-mono text-sm uppercase tracking-[0.14em] flex items-center gap-2">
+  <a
+    href={pathFor('en', routeKey)}
+    aria-label="English"
+    class={current === 'en' ? 'font-extrabold' : 'opacity-50 hover:opacity-100 transition-opacity'}
+  >
+    EN
+  </a>
+  <span aria-hidden="true" class="opacity-30">·</span>
+  <a
+    href={pathFor('fr', routeKey)}
+    aria-label="Français"
+    class={current === 'fr' ? 'font-extrabold' : 'opacity-50 hover:opacity-100 transition-opacity'}
+  >
+    FR
+  </a>
+</div>

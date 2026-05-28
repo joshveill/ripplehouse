@@ -1,25 +1,23 @@
 ---
-// How it works? — deck slide 9 · full-bleed yellow + one editorial sentence.
 import Reveal from './Reveal.astro';
+import { getLocale, useStrings } from '../i18n/utils';
+const s = useStrings(getLocale(Astro)).howItWorks;
+const sentence = s.sentence;
 ---
 
 <section id="how-it-works" class="bg-ripple-yellow text-ripple-black overflow-hidden">
   <div class="section">
     <div class="section-inner grid lg:grid-cols-12 gap-10 lg:gap-16 items-end">
       <div class="lg:col-span-3">
-        <span class="eyebrow">How it works?</span>
+        <span class="eyebrow">{s.eyebrow}</span>
         <p class="mt-4 font-mono text-sm leading-relaxed text-ripple-black/70 max-w-xs">
-          We don&apos;t stop at strategy &mdash; we build it through until it
-          works. We combine analytical rigor with a strategy-first,
-          execution-driven mindset.
+          {s.blurb}
         </p>
       </div>
 
       <div class="lg:col-span-9">
         <p class="text-display-md leading-tight">
-          We identify your <Reveal>unfair advantage</Reveal>,
-          align it with a real market need, structure it strategically, and <Reveal>activate it</Reveal> commercially &mdash;
-          so it drives measurable growth and <Reveal>lasting</Reveal> <Reveal>impact</Reveal>.
+          {sentence.before}<Reveal>{sentence.reveal1}</Reveal>{sentence.middle1}<Reveal>{sentence.reveal2}</Reveal>{sentence.middle2}<Reveal>{sentence.reveal3}</Reveal>{sentence.spacer}<Reveal>{sentence.reveal4}</Reveal>{sentence.after}
         </p>
 
       </div>

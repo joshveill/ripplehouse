@@ -1,59 +1,30 @@
 ---
-// Team — slides 14–19 of the pitch deck.
+// Team — slides 14–19 of the pitch deck. Photos stay imported here (Astro
+// processes them at build time); bio copy lives in the locale strings.
 import { Image } from 'astro:assets';
 import victorPhoto from '../assets/team/Victor.jpg';
 import thibeaudPhoto from '../assets/team/thibeaud.jpg';
 import stephPhoto from '../assets/team/steph.jpg';
 import graziPhoto from '../assets/team/Grazi.jpg';
+import { getLocale, useStrings } from '../i18n/utils';
 
-const team = [
-  {
-    name: 'Victor-Antoine Gauthier',
-    role: 'Founder',
-    photo: victorPhoto,
-    quote:
-      'I\'m deeply passionate about people. Understanding how we can scale brands while positively impacting the humans & the ecosystem behind them is what motivates me most. Helping scale brands the right way—sustainably, thoughtfully, and with intention—is what genuinely excites me every day.',
-    previously: 'Flirt, Dose, Sea Tales, Recap Products…',
-  },
-  {
-    name: 'Thibaud Joubert',
-    role: 'Senior Consultant - Head of Impact and Strategy',
-    photo: thibeaudPhoto,
-    quote:
-      'After decades working across CPG brands, value chains, and purpose-driven ventures, I\'m ready to jump in where my experience can help bring real, lasting impact. For me, it\'s about helping founders grow responsibly while shaping a more resilient and forward-thinking industry.',
-    previously: 'Group Bel, Ecotierra, Boulart, Toucan, 20+ food startups',
-  },
-  {
-    name: "Stéphan O'Reilly",
-    role: 'Senior Consultant - Commercial Development & Strategy',
-    photo: stephPhoto,
-    quote:
-      'I\'m passionate about working alongside entrepreneurs who challenge the status quo. Helping them refine their go-to-market strategy, strengthen execution, and build sustainable retail momentum is where I add the most value. For me, long-term success is always built through collaboration and trust.',
-    previously: 'White Wave, Danone, Dose Juice, Remedy Drink, Grazy…',
-  },
-  {
-    name: 'Grazianni Tsiory',
-    role: 'Executive Assistant - Project Coordinator',
-    photo: graziPhoto,
-    quote:
-      'I am dedicated to building the structures that simplify the everyday. I find great purpose in transforming complex tasks into fluid systems that help teams thrive. For me, creating a seamless and supportive environment is the key to driving collective success and moving forward with confidence with real impact.',
-    previously: null,
-  },
-];
+const s = useStrings(getLocale(Astro)).team;
+const photos = [victorPhoto, thibeaudPhoto, stephPhoto, graziPhoto];
+const members = s.members.map((member, i) => ({ ...member, photo: photos[i] }));
 ---
 
 <section id="team" class="section bg-white">
   <div class="section-inner">
     <div class="max-w-3xl mb-16 md:mb-20">
-      <span class="eyebrow">Our House</span>
+      <span class="eyebrow">{s.eyebrow}</span>
       <h2 class="mt-4 text-display-lg">
-        We&apos;ve built &amp; scaled brands before.<br />
-        We build now, with you.
+        {s.headingLine1}<br />
+        {s.headingLine2}
       </h2>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-      {team.map((member) => (
+      {members.map((member) => (
         <article class="flex flex-col h-full">
           <div class="aspect-[4/5] bg-ripple-yellow relative overflow-hidden">
             <Image
@@ -82,10 +53,10 @@ const team = [
           </div>
           <div class="team-card-previously pt-5 border-t border-ripple-black/15" style={member.previously ? '' : 'visibility:hidden'}>
             <p class="font-mono text-xs uppercase tracking-[0.14em] text-ripple-black/50 mb-2">
-              Previously
+              {s.previouslyLabel}
             </p>
             <p class="text-sm leading-relaxed">
-              {member.previously || '\u00A0'}
+              {member.previously || ' '}
             </p>
           </div>
         </article>

@@ -1,6 +1,11 @@
 ---
+import { getLocale, useStrings, pathFor } from '../i18n/utils';
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
+const locale = getLocale(Astro);
+const s = useStrings(locale).footer;
+const home = pathFor(locale, 'home');
+const contact = pathFor(locale, 'contact');
 ---
 
 <footer class="bg-ripple-black text-ripple-white">
@@ -10,31 +15,30 @@ const year = new Date().getFullYear();
       <div class="md:col-span-4">
         <img src={`${base}logos/ripplehouse-logo-white-cropped.png`} alt="RippleHouse" loading="lazy" decoding="async" class="h-14 w-auto mb-6" />
         <p class="tagline-mark">
-          Home of impactful business growth
+          {s.tagline}
         </p>
         <p class="mt-6 text-sm text-ripple-white/65 max-w-sm leading-relaxed">
-          We help CPG brands scale profitably through operator-led
-          execution for impactful growth.
+          {s.blurb}
         </p>
       </div>
 
       <!-- Site links -->
       <div class="md:col-span-3 md:col-start-10 text-left">
         <p class="font-mono text-xs uppercase tracking-[0.18em] text-ripple-white/45 mb-4">
-          Site
+          {s.siteLabel}
         </p>
         <ul class="space-y-2 text-sm">
-          <li><a href={`${base}#about`} class="link-underline">About us</a></li>
-          <li><a href={`${base}#what-we-do`} class="link-underline">What we do</a></li>
-          <li><a href={`${base}#team`} class="link-underline">Our House</a></li>
-          <li><a href={`${base}get-in-touch`} class="link-underline">Get in touch</a></li>
+          <li><a href={`${home}#about`} class="link-underline">{s.links.about}</a></li>
+          <li><a href={`${home}#what-we-do`} class="link-underline">{s.links.whatWeDo}</a></li>
+          <li><a href={`${home}#team`} class="link-underline">{s.links.team}</a></li>
+          <li><a href={contact} class="link-underline">{s.links.contact}</a></li>
         </ul>
       </div>
     </div>
 
     <div class="section-inner mt-14 pt-6 border-t border-ripple-white/15 flex flex-col md:flex-row md:justify-between gap-3 font-mono text-xs uppercase tracking-[0.14em] text-ripple-white/55">
-      <p>&copy; {year} RippleHouse. All rights reserved.</p>
-      <p>Built by operators &middot; designed for growth.</p>
+      <p>{s.copyright.replace('{year}', String(year))}</p>
+      <p>{s.kicker}</p>
     </div>
   </div>
 </footer>

@@ -6,6 +6,8 @@
 //   2. Add an entry to the array below with { name, logo }
 //   3. Entries without a `logo` render a placeholder while you collect assets.
 
+import { getLocale, useStrings } from '../i18n/utils';
+const s = useStrings(getLocale(Astro)).clients;
 const base = import.meta.env.BASE_URL;
 
 interface Client {
@@ -34,10 +36,10 @@ const clients: Client[] = [
 const marqueeItems = [...clients, ...clients];
 ---
 
-<section aria-label="Trusted by" class="bg-white border-y border-ripple-black/10">
+<section aria-label={s.eyebrow} class="bg-white border-y border-ripple-black/10">
   <div class="py-10 md:py-12">
     <p class="eyebrow text-center text-ripple-black/60 mb-6 md:mb-8">
-      Trusted by
+      {s.eyebrow}
     </p>
     <div class="logo-marquee-mask overflow-hidden">
       <ul class="logo-marquee-track items-center">

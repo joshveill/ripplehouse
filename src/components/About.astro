@@ -1,7 +1,6 @@
 ---
-// About us — full-bleed Ripple Yellow. Mirrors the deck's editorial
-// "Our Approach" slides (slide 2: "We are operators first..."), with
-// the manifesto paragraphs from slides 6 and 25.
+import { getLocale, useStrings } from '../i18n/utils';
+const s = useStrings(getLocale(Astro)).about;
 ---
 
 <section id="about" class="bg-ripple-yellow text-ripple-black">
@@ -9,11 +8,10 @@
     <div class="section-inner grid lg:grid-cols-12 gap-12 lg:gap-20">
       <!-- Section label -->
       <div class="lg:col-span-4">
-        <span class="eyebrow">About us</span>
+        <span class="eyebrow">{s.eyebrow}</span>
         <div class="mt-6 lg:sticky lg:top-32">
           <p class="font-mono text-sm leading-relaxed text-ripple-black/80 max-w-xs">
-            RippleHouse exists for brands — and the people behind them — who
-            want to scale with intention and create meaningful impact.
+            {s.blurb}
           </p>
         </div>
       </div>
@@ -21,21 +19,12 @@
       <!-- Manifesto -->
       <div class="lg:col-span-8 space-y-12">
         <h2 class="text-display-lg">
-          We are operators first &mdash; not just advisors.
+          {s.heading}
         </h2>
 
         <div class="space-y-8 text-lg md:text-xl leading-relaxed max-w-3xl">
-          <p>
-            Most brands don't fail because of product. They fail because they
-            can't scale correctly. Growth exposes every weakness in a business
-            &mdash; strategy gaps, operational strain, weak margins, misaligned
-            partnerships, poor retail execution and cultural cracks.
-          </p>
-          <p>
-            We understand that reality because we've lived it &mdash;
-            together, we can solve this problem. Our founder-to-founder
-            methodology is built on experience, precision, and execution.
-          </p>
+          <p>{s.paragraph1}</p>
+          <p>{s.paragraph2}</p>
         </div>
       </div>
     </div>

@@ -1,21 +1,34 @@
 ---
 // Site header — sticky with mobile hamburger menu.
 import Logo from './Logo.astro';
-const base = import.meta.env.BASE_URL;
+import LangSwitch from './LangSwitch.astro';
+import { getLocale, useStrings, pathFor } from '../i18n/utils';
+import type { RouteKey } from '../i18n/routes';
+
+interface Props {
+  routeKey?: RouteKey;
+}
+
+const { routeKey } = Astro.props;
+const locale = getLocale(Astro);
+const s = useStrings(locale);
+const home = pathFor(locale, 'home');
+const contact = pathFor(locale, 'contact');
 ---
 
 <header class="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-ripple-black/5">
   <div class="mx-auto max-w-page px-6 md:px-12 lg:px-20 h-16 md:h-20 flex items-center justify-between">
-    <a href={base} aria-label="RippleHouse — home">
+    <a href={home} aria-label={`RippleHouse — ${s.nav.home}`}>
       <Logo size="md" />
     </a>
 
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center gap-8">
-      <a href={`${base}#what-we-do`} class="link-underline font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
-      <a href={`${base}#team`} class="link-underline font-mono text-sm uppercase tracking-[0.14em]">Our House</a>
-      <a href={`${base}get-in-touch`} class="btn-primary">
-        Let's talk
+      <a href={`${home}#what-we-do`} class="link-underline font-mono text-sm uppercase tracking-[0.14em]">{s.nav.whatWeDo}</a>
+      <a href={`${home}#team`} class="link-underline font-mono text-sm uppercase tracking-[0.14em]">{s.nav.ourHouse}</a>
+      <LangSwitch routeKey={routeKey} />
+      <a href={contact} class="btn-primary">
+        {s.nav.letsTalk}
         <span aria-hidden="true">→</span>
       </a>
     </nav>
@@ -24,7 +37,7 @@ const base = import.meta.env.BASE_URL;
     <button
       id="mobile-menu-btn"
       class="md:hidden flex flex-col justify-center items-center gap-1.5 w-11 h-11 -mr-2"
-      aria-label="Toggle menu"
+      aria-label={s.nav.toggleMenu}
       aria-expanded="false"
     >
       <span class="block w-7 h-0.5 bg-ripple-black transition-transform duration-200" id="bar1"></span>
@@ -39,10 +52,11 @@ const base = import.meta.env.BASE_URL;
     class="md:hidden hidden border-t border-ripple-black/5 bg-white/95 backdrop-blur-md"
   >
     <div class="px-6 py-6 flex flex-col gap-4">
-      <a href={`${base}#what-we-do`} class="font-mono text-sm uppercase tracking-[0.14em]">What we do</a>
-      <a href={`${base}#team`} class="font-mono text-sm uppercase tracking-[0.14em]">Our House</a>
-      <a href={`${base}get-in-touch`} class="btn-primary text-center justify-center">
-        Let's talk
+      <a href={`${home}#what-we-do`} class="font-mono text-sm uppercase tracking-[0.14em]">{s.nav.whatWeDo}</a>
+      <a href={`${home}#team`} class="font-mono text-sm uppercase tracking-[0.14em]">{s.nav.ourHouse}</a>
+      <LangSwitch routeKey={routeKey} />
+      <a href={contact} class="btn-primary text-center justify-center">
+        {s.nav.letsTalk}
         <span aria-hidden="true">→</span>
       </a>
     </div>

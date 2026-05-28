@@ -1,21 +1,30 @@
 ---
 import '../styles/global.css';
+import { getLocale, useStrings, absoluteUrl, pathFor } from '../i18n/utils';
+import { locales, type RouteKey } from '../i18n/routes';
 
 interface Props {
   title?: string;
   description?: string;
+  routeKey?: RouteKey;
 }
 
+const locale = getLocale(Astro);
+const s = useStrings(locale);
+
 const {
-  title = 'RippleHouse — Home of impactful business growth',
-  description = 'RippleHouse helps CPG brands scale profitably through operator-led execution. Built by operators. Designed for growth.',
+  title = s.meta.defaultTitle,
+  description = s.meta.defaultDescription,
+  routeKey,
 } = Astro.props;
 
+const htmlLang = locale === 'fr' ? 'fr-CA' : 'en-CA';
+const ogLocale = locale === 'fr' ? 'fr_CA' : 'en_CA';
 const ogImage = new URL('/og-image.png', Astro.site ?? Astro.url).href;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,11 +36,31 @@ const ogImage = new URL('/og-image.png', Astro.site ?? Astro.url).href;
     <title>{title}</title>
     <meta name="description" content={description} />
 
+    {routeKey && locales.map((l) => (
+      <link
+        rel="alternate"
+        hreflang={l === 'fr' ? 'fr-CA' : 'en-CA'}
+        href={absoluteUrl(Astro.site, pathFor(l, routeKey))}
+      />
+    ))}
+    {routeKey && (
+      <link
+        rel="alternate"
+        hreflang="x-default"
+        href={absoluteUrl(Astro.site, pathFor('en', routeKey))}
+      />
+    )}
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta
+      property="og:locale:alternate"
+      content={locale === 'en' ? 'fr_CA' : 'en_CA'}
+    />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

@@ -1,8 +1,7 @@
 ---
-// Hero — mirrors the deck's cover composition: bold copy on the left,
-// ripple pattern panel on the right. White-dominant with the yellow
-// pattern as the visual punch.
+import { getLocale, useStrings } from '../i18n/utils';
 const base = import.meta.env.BASE_URL;
+const s = useStrings(getLocale(Astro)).hero;
 ---
 
 <section class="section pt-6 md:pt-8 pb-20 md:pb-28 overflow-hidden relative" id="hero-section">
@@ -10,20 +9,19 @@ const base = import.meta.env.BASE_URL;
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
       <!-- Copy column -->
       <div class="lg:col-span-7 flex flex-col gap-8 animate-fade-up">
-        <span class="eyebrow text-ripple-black/70">Company · Est. Montréal</span>
+        <span class="eyebrow text-ripple-black/70">{s.eyebrow}</span>
 
         <h1 class="text-display-xl text-ripple-black">
-          Home of<br />
+          {s.headlineLine1}<br />
           <span class="relative inline-block pb-1">
-            impactful
+            {s.headlineHighlight}
             <span class="absolute bottom-0 left-0 w-full h-[3px] bg-ripple-yellow rounded-full"></span>
           </span><br />
-          business growth.
+          {s.headlineLine2}
         </h1>
 
         <p class="max-w-xl text-lg md:text-xl text-ripple-black/75 leading-relaxed">
-          We help CPG brands scale profitably through operator-led execution for
-          impactful growth.
+          {s.lede}
         </p>
       </div>
 
