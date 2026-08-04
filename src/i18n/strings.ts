@@ -315,7 +315,7 @@ export const strings = {
         },
         {
           name: 'Grazianni Tsiory',
-          role: 'Adjointe à la direction — Coordonnatrice de projets',
+          role: 'Adjoint à la direction — Coordonnateur de projets',
           quote:
             'Je me consacre à bâtir les structures qui simplifient le quotidien. Je trouve un grand sens à transformer des tâches complexes en systèmes fluides qui font rayonner les équipes. Pour moi, créer un environnement harmonieux et soutenant, c’est la clé du succès collectif et d’une avancée confiante, avec un impact réel.',
           previously: null as string | null,
